@@ -1,0 +1,10 @@
+/node_modules/
+/__for_electron
+.cache
+.vscode
+/diamond/
+/diamond_game-win32-x64
+main.js
+styles.css
+webpack.config.js
+.eslintrc.json
