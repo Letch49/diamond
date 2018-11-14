@@ -1,5 +1,5 @@
-import { disableButtons, setImg, table } from './src/functions.js';
-import { drawCanvas, drawChests, clickChest, clearChest } from './src/gameEnigne.js';
+import { disableButtons, setImg, table } from './functions.js';
+import { drawCanvas, drawChests, clickChest, clearChest } from './gameEnigne.js';
 
 /**
  * 

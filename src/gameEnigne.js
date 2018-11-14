@@ -17,8 +17,8 @@ import {Chests as C_rnd} from './obj/chest_random.js';
 export const drawCanvas = (cnvId, table, fn, size, gameMode) => {
     const canvas = document.createElement('canvas');
     canvas.setAttribute('id', cnvId);
-    canvas.setAttribute('width', (size + (table.length < 16 ? 60 : 30)) * Math.sqrt(table.length));
-    canvas.setAttribute('height', (size + (table.length < 16 ? 60 : 30)) * Math.sqrt(table.length));
+    canvas.setAttribute('width', (size + (table.length < 16 ? 60 : 35)) * Math.sqrt(table.length));
+    canvas.setAttribute('height', (size + (table.length < 16 ? 60 : 35)) * Math.sqrt(table.length));
     const body = document.querySelector('#body');
     body.appendChild(canvas);
 
