@@ -1,5 +1,5 @@
-import disableButtons from './src/disableButtons.js';
-import { table, drawCanvas, drawChests, clickChest, clearChest, setImg } from './src/gameEnigne.js';
+import { disableButtons, setImg, table } from './src/functions.js';
+import { drawCanvas, drawChests, clickChest, clearChest } from './src/gameEnigne.js';
 /**
  * 
  * @param {string} cnv is id of canvas
@@ -49,6 +49,7 @@ const main = (cnvId, size) => {
             const gameMode = mode.checked === true ? 'def' : 'undef';
             const tbl = table(el.dataset.compl, size);
             disableButtons(compl);
+            document.querySelector('.header').style.display = 'none';
             drawCanvas(cnvId, tbl, game, size, gameMode);
         });
     });

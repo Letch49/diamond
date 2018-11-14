@@ -1,43 +1,9 @@
-import flatten from './flatten.js';
+import {flatten, shuffle, drawTable} from './functions.js';
 import MicroModal from '../node_modules/micromodal/dist/micromodal.min.js';
 import {Chests as C_def} from './obj/chest_defined.js';
 import {Chests as C_rnd} from './obj/chest_random.js';
 
 // const MictoModal = null;
-/**
- * 
- * @param {int} num is a level of complexity
- */
-const table = (num, size) => {
-    num = new Number(num) + 1;
-    const arr = new Array();
-    let temp_arr = new Array();
-
-    for (let i = 1; i < num; i++) {
-        for (let j = 1; j < num; j++) {
-            temp_arr.push({ x: j * (size + 10), y: i * (size + 10), size: size });
-        }
-        arr.push(temp_arr);
-        temp_arr = [];
-    }
-
-    return flatten(arr);
-};
-
-const drawTable = (ctx, table, size) => {
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 1;
-    for (let i = 0; i < table.length; i++) {
-        const el = table[i];
-        ctx.strokeRect(el.x, el.y, size, size);
-    }
-};
-
-export const setImg = (src) => {
-    const img = new Image();
-    img.src = src;
-    return img;
-};
 
 /**
  * 
@@ -45,7 +11,7 @@ export const setImg = (src) => {
  * @param {array:objects} table is array of objects
  * @param {function} fn is get a `game`
  */
-const drawCanvas = (cnvId, table, fn, size, gameMode) => {
+export const drawCanvas = (cnvId, table, fn, size, gameMode) => {
     const canvas = document.createElement('canvas');
     canvas.setAttribute('id', cnvId);
     canvas.setAttribute('width', 960);
@@ -67,14 +33,6 @@ const drawCanvas = (cnvId, table, fn, size, gameMode) => {
  * @param {int} end last value
  * @param {array} arr is array of uniq table
  */
-const shuffle = (a) => {
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
-};
-
 export const drawChests = (ctx, arr, img, size, iter, notClick) => {
     const arrayDrawen = new Array();
     const arrayNotDrawen = new Array();
@@ -121,8 +79,8 @@ export const clickChest = (ev, arr, cnv, ctx, size, chestEmpty, chestDiamond, ob
             return false;
         }
 
-        const scoreArea = document.querySelector('#score');
-        scoreArea.innerHTML = score;
+        const scoreArea = document.querySelectorAll('.score');
+        scoreArea.forEach(dom => dom.innerHTML = `Клики: ${score}`);
 
         if (el === true) {
             gameEnd(score);
@@ -160,5 +118,3 @@ const gameEnd = (score) => {
 const gameWin = (score) => {
     modal(score, 'Поздравляем');
 };
-
-export { table, drawCanvas };
