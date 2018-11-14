@@ -5,6 +5,5 @@
 /diamond/
 /diamond_game-win32-x64
 main.js
-styles.css
 webpack.config.js
 .eslintrc.json
