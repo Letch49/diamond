@@ -1,15 +1,21 @@
 import { disableButtons, setImg, table } from './src/functions.js';
 import { drawCanvas, drawChests, clickChest, clearChest } from './src/gameEnigne.js';
+
 /**
  * 
- * @param {string} cnv is id of canvas
- * @param {array:objects} table is array of objects. ex: {x, y, width, height, isCLick}
- * @param {int} start ???
- * @param {int} finish is the next element 
- * @param {int} size is a size of image, blocks
- * @param {array:objects} arrayOfImg is a uniq array of table
+ * @param {object} cnv canvas
+ * @param {object} ctx canvas context
+ * @param {array} table table
+ * @param {???} finish not use in this ver
+ * @param {int} size px of image and one row
+ * @param {int} len length of table
+ * @param {string} gameMode which class you selected
+ * @param {array} ArrayOfChests array of chests
+ * @param {class} gameFunctions selected class
+ * @param {iterator} iter iterator of iterative process
+ * @param {bool} notClick if not click to chest
+ * @param {int} score counter of clicks
  */
-
 const game = (cnv, ctx, table, finish = 3, size, len, gameMode, ArrayOfChests, gameFunctions, iter = 0, notClick = false, score = 1) => {
     const chest = setImg('images/chest-close.png');
     const chestEmpty = setImg('images/chest-empty.png');
@@ -40,6 +46,8 @@ const game = (cnv, ctx, table, finish = 3, size, len, gameMode, ArrayOfChests, g
 /**
  * 
  * @param {string} cnvId is id of canvas
+ * @param {int} size px of image and one row
+ * 
  */
 const main = (cnvId, size) => {
     const compl = document.querySelectorAll('button');

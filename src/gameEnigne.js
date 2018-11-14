@@ -10,6 +10,8 @@ import {Chests as C_rnd} from './obj/chest_random.js';
  * @param {string} cnvId is id of canvas
  * @param {array:objects} table is array of objects
  * @param {function} fn is get a `game`
+ * @param {int} size px of image and one row
+ * @param {class} gameMode selected class
  */
 export const drawCanvas = (cnvId, table, fn, size, gameMode) => {
     const canvas = document.createElement('canvas');
@@ -69,6 +71,10 @@ export const drawChests = (ctx, arr, img, size, iter, notClick) => {
     return arr;
 };
 
+/**
+ * @returns return false if click not to chest;
+ * @todo return gameWin and gameEnd
+ */
 export const clickChest = (ev, arr, cnv, ctx, size, chestEmpty, chestDiamond, ob, score) => {
     const x = ev.pageX - cnv.offsetLeft;
     const y = ev.pageY - cnv.offsetTop;
@@ -91,6 +97,11 @@ export const clickChest = (ev, arr, cnv, ctx, size, chestEmpty, chestDiamond, ob
     }
 };
 
+/**
+ * 
+ * @param {object} ctx context of canvas
+ * @param {array} arr array of chests
+ */
 export const clearChest = (ctx, arr) => {
     arr.forEach((el) => {
         ctx.clearRect(el.x, el.y, el.width, el.height);

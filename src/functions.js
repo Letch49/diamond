@@ -2,6 +2,10 @@ export const onloadImg = (img, fn) => {
     img.onload = () => fn;
 };
 
+/**
+ * 
+ * @param {arrat} array to flat
+ */
 export const flatten = (array) => array.reduce((acc, el) => {
     if (Array.isArray(el)){
         flatten(el).forEach(element => {
@@ -12,12 +16,21 @@ export const flatten = (array) => array.reduce((acc, el) => {
     return [...acc, el];
 },[]);
 
+/**
+ * 
+ * @param {array} elements disable buttons
+ */
 export const disableButtons = (elements) => {
     elements.forEach((el) => {
         el.disabled = true;
     });
 };
 
+/**
+ * 
+ * @param {array} a 
+ * @return array with random elements
+ */
 export const shuffle = (a) => {
     for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -26,12 +39,22 @@ export const shuffle = (a) => {
     return a;
 };
 
+/**
+ * 
+ * @param {string} src path to image
+ */
 export const setImg = (src) => {
     const img = new Image();
     img.src = src;
     return img;
 };
 
+
+/**
+ * 
+ * @param {int} num number of rows
+ * @param {int} size px of image and one row
+ */
 export const table = (num, size) => {
     num = new Number(num) + 1;
     const arr = new Array();
@@ -48,6 +71,12 @@ export const table = (num, size) => {
     return flatten(arr);
 };
 
+/**
+ * 
+ * @param {object} ctx context of canvas
+ * @param {array} table array of rows
+ * @param {int} size px of image and one row
+ */
 export const drawTable = (ctx, table, size) => {
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 1;
