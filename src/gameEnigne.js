@@ -1,4 +1,4 @@
-import {flatten, shuffle, drawTable} from './functions.js';
+import {shuffle, drawTable} from './functions.js';
 import MicroModal from '../node_modules/micromodal/dist/micromodal.min.js';
 import {Chests as C_def} from './obj/chest_defined.js';
 import {Chests as C_rnd} from './obj/chest_random.js';
@@ -13,11 +13,12 @@ import {Chests as C_rnd} from './obj/chest_random.js';
  * @param {int} size px of image and one row
  * @param {class} gameMode selected class
  */
+
 export const drawCanvas = (cnvId, table, fn, size, gameMode) => {
     const canvas = document.createElement('canvas');
     canvas.setAttribute('id', cnvId);
-    canvas.setAttribute('width', 960);
-    canvas.setAttribute('height', 960);
+    canvas.setAttribute('width', (size + (table.length < 16 ? 60 : 30)) * Math.sqrt(table.length));
+    canvas.setAttribute('height', (size + (table.length < 16 ? 60 : 30)) * Math.sqrt(table.length));
     const body = document.querySelector('#body');
     body.appendChild(canvas);
 
