@@ -27,9 +27,9 @@ export class Chests{
             
             if (rnd >= 50) {
                 el.isGold = true;
+                el.isClick = true;
             }
-
-            el.isClick = true;
+            
             ctx.clearRect(el.x, el.y, el.width, el.height);
             el.isGold ? ctx.drawImage(chestDiamond, el.x, el.y, size, size) : ctx.drawImage(chestEmpty, el.x, el.y, size, size);
         }
